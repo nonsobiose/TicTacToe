@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cell_two_zero.setOnClickListener(this);
         cell_two_one.setOnClickListener(this);
         cell_two_two.setOnClickListener(this);
-
     }
 
     //Checks each index in the multi-dimensional array to see if any has been filled up consecutively
@@ -262,39 +261,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    //Sets all cells back to default empty background
     public void restart(View view) {
-        //Sets the players play status text to default player one
-        playerStatusDisplay.setText(R.string.player_one_turn);
-
-        //Sets the players play turn, back to default, player one goes first
-        isPlayerOneTurn = true;
-        isPlayerTwoTurn = false;
-
-        //Sets all cells back to default empty background
-        cell_zero_zero.setImageResource(R.drawable.tic_tac_toe_cell_xxxhdpi);
-        cell_zero_one.setImageResource(R.drawable.tic_tac_toe_cell_xxxhdpi);
-        cell_zero_two.setImageResource(R.drawable.tic_tac_toe_cell_xxxhdpi);
-        cell_one_zero.setImageResource(R.drawable.tic_tac_toe_cell_xxxhdpi);
-        cell_one_one.setImageResource(R.drawable.tic_tac_toe_cell_xxxhdpi);
-        cell_one_two.setImageResource(R.drawable.tic_tac_toe_cell_xxxhdpi);
-        cell_two_zero.setImageResource(R.drawable.tic_tac_toe_cell_xxxhdpi);
-        cell_two_one.setImageResource(R.drawable.tic_tac_toe_cell_xxxhdpi);
-        cell_two_two.setImageResource(R.drawable.tic_tac_toe_cell_xxxhdpi);
-
-        //Sets all cells back to clickable
-        cell_zero_zero.setClickable(true);
-        cell_zero_one.setClickable(true);
-        cell_zero_two.setClickable(true);
-        cell_one_zero.setClickable(true);
-        cell_one_one.setClickable(true);
-        cell_one_two.setClickable(true);
-        cell_two_zero.setClickable(true);
-        cell_two_one.setClickable(true);
-        cell_two_two.setClickable(true);
-
-        //Sets the cells array to a new clean slate
-        cells = new int[3][3];
-
+        recreate();
     }
 
     @Override
