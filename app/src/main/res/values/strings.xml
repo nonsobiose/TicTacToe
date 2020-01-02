@@ -2,4 +2,15 @@
     <string name="app_name">Tic Tac Toe</string>
     <string name="player_one_turn">Player One</string>
     <string name="player_two_turn">Player Two</string>
+    <string name="button_restart">Restart</string>
+
+    <string name="content_description_cell_zero_zero">Top Left Cell</string>
+    <string name="content_description_cell_zero_one">Top Middle Cell</string>
+    <string name="content_description_cell_zero_two">Top Right Cell</string>
+    <string name="content_description_cell_one_zero">Center Left Cell</string>
+    <string name="content_description_cell_one_one">Center Middle Cell</string>
+    <string name="content_description_cell_one_two">Center Right Cell</string>
+    <string name="content_description_cell_two_zero">Bottom Left Cell</string>
+    <string name="content_description_cell_two_two">Bottom Middle Cell</string>
+    <string name="content_description_cell_two_one">Bottom Right Cell</string>
 </resources>

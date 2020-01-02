@@ -1,4 +1,4 @@
-package com.pisure.TicTacToe;
+package com.nonsobiose.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nonsobiose.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
