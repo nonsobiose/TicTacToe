@@ -1,11 +1,13 @@
 package com.nonsobiose.tictactoe;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.nonsobiose.R;
 
@@ -14,9 +16,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Declares a boolean variable for player 1 and sets its playing status to true
     //Hint: Player one always plays first
     private boolean isPlayerOneTurn = true;
-
-    //Declares a boolean variable for player 2 and sets its playing status to false
-    private boolean isPlayerTwoTurn = false;
 
     //Declares and sets up a multi-dimensional array which represents each cell on the tic_tac_toe board
     private int[][] cells = new int[3][3];
@@ -38,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // Displays the current players turn
     TextView playerStatusDisplay;
-
 
 
     @Override
@@ -80,83 +78,77 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //Checks each index in the multi-dimensional array to see if any has been filled up consecutively by a player
-    private void checkForPlayerWin(int playerSymbol) {
-        //Checks top/first row
+    private void checkForPlayerWin(int playerSymbol, String playerMessage) {
+        // Check top row
         if (cells[0][0] == playerSymbol) {
             if (cells[0][1] == playerSymbol) {
                 if (cells[0][2] == playerSymbol) {
-                    Toast.makeText(getApplicationContext(), "Player One has won", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), playerMessage, Toast.LENGTH_SHORT).show();
                     restart(findViewById(R.id.restart));
+                }
+                // Check left column
+            } else if (cells[1][0] == playerSymbol) {
+                if (cells[2][0] == playerSymbol) {
+                    Toast.makeText(getApplicationContext(), playerMessage, Toast.LENGTH_SHORT).show();
+                    restart(findViewById(R.id.restart));
+
+                }
+                // Check diagonal from left to right
+            } else {
+                if (cells[1][1] == playerSymbol) {
+                    if (cells[2][2] == playerSymbol) {
+                        Toast.makeText(getApplicationContext(), playerMessage, Toast.LENGTH_SHORT).show();
+                        restart(findViewById(R.id.restart));
+                    }
                 }
             }
         }
 
-        //Checks middle/second row
+        // Check middle row
         if (cells[1][0] == playerSymbol) {
             if (cells[1][1] == playerSymbol) {
                 if (cells[1][2] == playerSymbol) {
-                    Toast.makeText(getApplicationContext(), "Player One has won", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), playerMessage, Toast.LENGTH_SHORT).show();
                     restart(findViewById(R.id.restart));
                 }
             }
         }
 
-        //Checks last/third row
+        // Check bottom row
         if (cells[2][0] == playerSymbol) {
             if (cells[2][1] == playerSymbol) {
                 if (cells[2][2] == playerSymbol) {
-                    Toast.makeText(getApplicationContext(), "Player One has won", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), playerMessage, Toast.LENGTH_SHORT).show();
                     restart(findViewById(R.id.restart));
                 }
             }
         }
 
-        //Checks left/first column
-        if (cells[0][0] == playerSymbol) {
-            if (cells[1][0] == playerSymbol) {
-                if (cells[2][0] == playerSymbol) {
-                    Toast.makeText(getApplicationContext(), "Player One has won", Toast.LENGTH_SHORT).show();
-                    restart(findViewById(R.id.restart));
-                }
-            }
-        }
-
-        //Checks middle/second column
+        // Check middle column
         if (cells[0][1] == playerSymbol) {
             if (cells[1][1] == playerSymbol) {
                 if (cells[2][1] == playerSymbol) {
-                    Toast.makeText(getApplicationContext(), "Player One has won", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), playerMessage, Toast.LENGTH_SHORT).show();
                     restart(findViewById(R.id.restart));
                 }
             }
         }
 
-        //Checks last/right column
+        // Check right column
         if (cells[0][2] == playerSymbol) {
             if (cells[1][2] == playerSymbol) {
                 if (cells[2][2] == playerSymbol) {
-                    Toast.makeText(getApplicationContext(), "Player One has won", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), playerMessage, Toast.LENGTH_SHORT).show();
                     restart(findViewById(R.id.restart));
                 }
             }
         }
-
-        //Checks diagonal cells from the top left to the bottom right
-        if (cells[0][0] == playerSymbol) {
-            if (cells[1][1] == playerSymbol) {
-                if (cells[2][2] == playerSymbol) {
-                    Toast.makeText(getApplicationContext(), "Player One has won", Toast.LENGTH_SHORT).show();
-                    restart(findViewById(R.id.restart));
-                }
-            }
-        }
-
 
         //Checks diagonal cells from the bottom left to the top right
         if (cells[2][0] == playerSymbol) {
             if (cells[1][1] == playerSymbol) {
                 if (cells[0][2] == playerSymbol) {
-                    Toast.makeText(getApplicationContext(), "Player One has won", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), playerMessage, Toast.LENGTH_SHORT).show();
                     restart(findViewById(R.id.restart));
                 }
             }
@@ -169,11 +161,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean("isPlayerOneTurn", isPlayerOneTurn);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        isPlayerOneTurn = savedInstanceState.getBoolean("isPlayerOneTurn");
+        if (isPlayerOneTurn) {
+            playerStatusDisplay.setText(R.string.player_one_turn);
+        } else {
+            playerStatusDisplay.setText(R.string.player_two_turn);
+        }
+    }
+
+    @Override
     public void onClick(View view) {
         ImageView cell = (ImageView) view;
         String cellTag = cell.getTag().toString();
         switch (cellTag) {
-            case "00" :
+            case "00":
                 doPlayerAction(cell, 0, 0);
                 break;
             case "01":
@@ -209,7 +218,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * This method handles actions for a player, by setting the appropriate image on the cell, storing the corresponding position in the
      * backing array and then switching player turns and display text
-     * @param cell where player's symbol is played
+     *
+     * @param cell          where player's symbol is played
      * @param cellPositionX position on the cell
      * @param cellPositionY position on the cell
      */
@@ -219,19 +229,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // Represents playerOne in the backing multi-dimensional array
             int PLAYER_ONE_SYMBOL = 1;
             cells[cellPositionX][cellPositionY] = PLAYER_ONE_SYMBOL;
-            checkForPlayerWin(PLAYER_ONE_SYMBOL);
+            checkForPlayerWin(PLAYER_ONE_SYMBOL, getText(R.string.win_message_playerOne).toString());
             isPlayerOneTurn = false;
-            isPlayerTwoTurn = true;
             playerStatusDisplay.setText(R.string.player_two_turn);
             cell.setClickable(false);
-        } else if (isPlayerTwoTurn) {
+        } else {
             cell.setImageResource(R.drawable.player_two_mark);
             // Represents playerTwo in the backing multi-dimensional array
             int PLAYER_TWO_SYMBOL = 2;
             cells[cellPositionX][cellPositionY] = PLAYER_TWO_SYMBOL;
-            checkForPlayerWin(PLAYER_TWO_SYMBOL);
+            checkForPlayerWin(PLAYER_TWO_SYMBOL, getText(R.string.win_message_playerTwo).toString());
             isPlayerOneTurn = true;
-            isPlayerTwoTurn = false;
             playerStatusDisplay.setText(R.string.player_one_turn);
             cell.setClickable(false);
         }

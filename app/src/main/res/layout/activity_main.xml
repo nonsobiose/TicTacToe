@@ -1,166 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:grid="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nonsobiose.tictactoe.MainActivity">
+    android:background="#030506"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/players_turn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="#FBAF3F"
         android:gravity="center"
         android:padding="10dp"
-        android:textColor="#FFF"
+        android:textColor="@color/colorWhite"
         android:textSize="50sp"
         android:textStyle="bold"
-        android:typeface="sans" />
+        android:typeface="sans"
+        grid:layout_constraintEnd_toEndOf="parent"
+        grid:layout_constraintStart_toStartOf="parent"
+        grid:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/cell_zero_zero"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
+        android:contentDescription="@string/content_description_cell_zero_zero"
+        android:tag="00"
+        grid:layout_constraintBottom_toTopOf="@+id/cell_one_zero"
+        grid:layout_constraintEnd_toStartOf="@+id/cell_zero_one"
+        grid:layout_constraintHorizontal_bias="0.5"
+        grid:layout_constraintStart_toStartOf="parent"
+        grid:layout_constraintTop_toBottomOf="@+id/players_turn" />
+
+
+    <ImageView
+        android:id="@+id/cell_zero_one"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
+        android:contentDescription="@string/content_description_cell_zero_one"
+        android:tag="01"
+        grid:layout_constraintBottom_toTopOf="@+id/cell_one_one"
+        grid:layout_constraintEnd_toStartOf="@+id/cell_zero_two"
+        grid:layout_constraintHorizontal_bias="0.5"
+        grid:layout_constraintStart_toEndOf="@+id/cell_zero_zero"
+        grid:layout_constraintTop_toBottomOf="@+id/players_turn" />
+
+    <ImageView
+        android:id="@+id/cell_zero_two"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
+        android:contentDescription="@string/content_description_cell_zero_two"
+        android:tag="02"
+        grid:layout_constraintBottom_toTopOf="@+id/cell_one_two"
+        grid:layout_constraintEnd_toEndOf="parent"
+        grid:layout_constraintHorizontal_bias="0.5"
+        grid:layout_constraintStart_toEndOf="@+id/cell_zero_one"
+        grid:layout_constraintTop_toBottomOf="@+id/players_turn" />
+
+    <ImageView
+        android:id="@+id/cell_one_zero"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
+        android:contentDescription="@string/content_description_cell_two_zero"
+        android:tag="10"
+        grid:layout_constraintBottom_toTopOf="@+id/cell_two_one"
+        grid:layout_constraintEnd_toStartOf="@+id/cell_one_one"
+        grid:layout_constraintHorizontal_bias="0.5"
+        grid:layout_constraintStart_toStartOf="parent"
+        grid:layout_constraintTop_toBottomOf="@+id/cell_zero_zero" />
+
+    <ImageView
+        android:id="@+id/cell_one_one"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
+        android:contentDescription="@string/content_description_cell_one_one"
+        android:tag="11"
+        grid:layout_constraintBottom_toTopOf="@+id/cell_two_two"
+        grid:layout_constraintEnd_toStartOf="@+id/cell_one_two"
+        grid:layout_constraintHorizontal_bias="0.5"
+        grid:layout_constraintStart_toEndOf="@+id/cell_one_zero"
+        grid:layout_constraintTop_toBottomOf="@+id/cell_zero_two" />
+
+    <ImageView
+        android:id="@+id/cell_one_two"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
+        android:contentDescription="@string/content_description_cell_one_two"
+        android:tag="12"
+        grid:layout_constraintBottom_toTopOf="@+id/cell_two_zero"
+        grid:layout_constraintEnd_toEndOf="parent"
+        grid:layout_constraintHorizontal_bias="0.5"
+        grid:layout_constraintStart_toEndOf="@+id/cell_one_one"
+        grid:layout_constraintTop_toBottomOf="@+id/cell_zero_one" />
+
+    <ImageView
+        android:id="@+id/cell_two_zero"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
+        android:contentDescription="@string/content_description_cell_two_one"
+        android:tag="20"
+        grid:layout_constraintBottom_toTopOf="@+id/restart"
+        grid:layout_constraintEnd_toStartOf="@+id/cell_two_one"
+        grid:layout_constraintHorizontal_bias="0.5"
+        grid:layout_constraintStart_toStartOf="parent"
+        grid:layout_constraintTop_toBottomOf="@+id/cell_one_zero" />
+
+    <ImageView
+        android:id="@+id/cell_two_one"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
+        android:contentDescription="@string/content_description_cell_two_two"
+        android:tag="21"
+        grid:layout_constraintBottom_toTopOf="@+id/restart"
+        grid:layout_constraintEnd_toStartOf="@+id/cell_two_two"
+        grid:layout_constraintHorizontal_bias="0.5"
+        grid:layout_constraintStart_toEndOf="@+id/cell_two_zero"
+        grid:layout_constraintTop_toBottomOf="@+id/cell_one_one" />
+
+    <ImageView
+        android:id="@+id/cell_two_two"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
+        android:contentDescription="@string/content_description_cell_two_zero"
+        android:tag="22"
+        grid:layout_constraintBottom_toTopOf="@+id/restart"
+        grid:layout_constraintEnd_toEndOf="parent"
+        grid:layout_constraintHorizontal_bias="0.5"
+        grid:layout_constraintStart_toEndOf="@+id/cell_two_one"
+        grid:layout_constraintTop_toBottomOf="@+id/cell_one_two" />
+
 
     <Button
         android:id="@+id/restart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#F05A28"
+        android:background="@color/cherryRed"
         android:gravity="center"
         android:onClick="restart"
         android:padding="10dp"
         android:text="@string/button_restart"
-        android:textColor="#FFF"
+        android:textColor="@color/colorWhite"
         android:textSize="40sp"
         android:textStyle="bold"
-        android:typeface="sans" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/restart"
-        android:layout_below="@id/players_turn"
-        android:background="#030506"
-        android:orientation="vertical">
-
-
-        <ImageView
-            android:id="@+id/cell_zero_zero"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
-            android:tag="00"
-            grid:layout_constraintBottom_toTopOf="@+id/cell_one_zero"
-            grid:layout_constraintEnd_toStartOf="@+id/cell_zero_one"
-            grid:layout_constraintHorizontal_bias="0.5"
-            grid:layout_constraintStart_toStartOf="parent"
-            grid:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/content_description_cell_zero_zero" />
-
-        <ImageView
-            android:id="@+id/cell_zero_one"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
-            android:tag="01"
-            grid:layout_constraintBottom_toTopOf="@+id/cell_one_one"
-            grid:layout_constraintEnd_toStartOf="@+id/cell_zero_two"
-            grid:layout_constraintHorizontal_bias="0.5"
-            grid:layout_constraintStart_toEndOf="@+id/cell_zero_zero"
-            grid:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/content_description_cell_zero_one" />
-
-        <ImageView
-            android:id="@+id/cell_zero_two"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
-            android:tag="02"
-            grid:layout_constraintBottom_toTopOf="@+id/cell_one_two"
-            grid:layout_constraintEnd_toEndOf="parent"
-            grid:layout_constraintHorizontal_bias="0.5"
-            grid:layout_constraintStart_toEndOf="@+id/cell_zero_one"
-            grid:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/content_description_cell_zero_two" />
-
-        <ImageView
-            android:id="@+id/cell_one_zero"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
-            android:tag="10"
-            grid:layout_constraintBottom_toTopOf="@+id/cell_two_one"
-            grid:layout_constraintEnd_toStartOf="@+id/cell_one_one"
-            grid:layout_constraintHorizontal_bias="0.5"
-            grid:layout_constraintStart_toStartOf="parent"
-            grid:layout_constraintTop_toBottomOf="@+id/cell_zero_zero"
-            android:contentDescription="@string/content_description_cell_two_zero" />
-
-        <ImageView
-            android:id="@+id/cell_one_one"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
-            android:tag="11"
-            grid:layout_constraintBottom_toTopOf="@+id/cell_two_two"
-            grid:layout_constraintEnd_toStartOf="@+id/cell_one_two"
-            grid:layout_constraintHorizontal_bias="0.5"
-            grid:layout_constraintStart_toEndOf="@+id/cell_one_zero"
-            grid:layout_constraintTop_toBottomOf="@+id/cell_zero_two"
-            android:contentDescription="@string/content_description_cell_one_one" />
-
-        <ImageView
-            android:id="@+id/cell_one_two"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
-            android:tag="12"
-            grid:layout_constraintBottom_toTopOf="@+id/cell_two_zero"
-            grid:layout_constraintEnd_toEndOf="parent"
-            grid:layout_constraintHorizontal_bias="0.5"
-            grid:layout_constraintStart_toEndOf="@+id/cell_one_one"
-            grid:layout_constraintTop_toBottomOf="@+id/cell_zero_one"
-            android:contentDescription="@string/content_description_cell_one_two" />
-
-        <ImageView
-            android:id="@+id/cell_two_zero"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
-            android:tag="20"
-            grid:layout_constraintBottom_toBottomOf="parent"
-            grid:layout_constraintEnd_toStartOf="@+id/cell_two_one"
-            grid:layout_constraintHorizontal_bias="0.5"
-            grid:layout_constraintStart_toStartOf="parent"
-            grid:layout_constraintTop_toBottomOf="@+id/cell_one_zero"
-            android:contentDescription="@string/content_description_cell_two_one" />
-
-        <ImageView
-            android:id="@+id/cell_two_one"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
-            android:tag="21"
-            grid:layout_constraintBottom_toBottomOf="parent"
-            grid:layout_constraintEnd_toStartOf="@+id/cell_two_two"
-            grid:layout_constraintHorizontal_bias="0.5"
-            grid:layout_constraintStart_toEndOf="@+id/cell_two_zero"
-            grid:layout_constraintTop_toBottomOf="@+id/cell_one_one"
-            android:contentDescription="@string/content_description_cell_two_two" />
-
-        <ImageView
-            android:id="@+id/cell_two_two"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/tic_tac_toe_cell_xxxhdpi"
-            android:tag="22"
-            grid:layout_constraintBottom_toBottomOf="parent"
-            grid:layout_constraintEnd_toEndOf="parent"
-            grid:layout_constraintHorizontal_bias="0.5"
-            grid:layout_constraintStart_toEndOf="@+id/cell_two_one"
-            grid:layout_constraintTop_toBottomOf="@+id/cell_one_two"
-            android:contentDescription="@string/content_description_cell_two_zero" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</RelativeLayout>
+        android:typeface="sans"
+        grid:layout_constraintBottom_toBottomOf="parent"
+        grid:layout_constraintEnd_toEndOf="parent"
+        grid:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

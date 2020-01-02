@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/tic_tac_toe_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.nonsobiose.tictactoe.MainActivity">
+        <activity android:name="com.nonsobiose.tictactoe.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
