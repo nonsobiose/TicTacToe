@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">Tic Tac Toe</string>
+
+    <!-- Player turn text -->
     <string name="player_one_turn">Player One</string>
     <string name="player_two_turn">Player Two</string>
+
+    <!-- Button text -->
     <string name="button_restart">Restart</string>
 
+    <!-- Cell content description -->
     <string name="content_description_cell_zero_zero">Top Left Cell</string>
     <string name="content_description_cell_zero_one">Top Middle Cell</string>
     <string name="content_description_cell_zero_two">Top Right Cell</string>
@@ -13,4 +18,8 @@
     <string name="content_description_cell_two_zero">Bottom Left Cell</string>
     <string name="content_description_cell_two_two">Bottom Middle Cell</string>
     <string name="content_description_cell_two_one">Bottom Right Cell</string>
+
+    <!-- Player win message -->
+    <string name="win_message_playerOne">Player One Wins</string>
+    <string name="win_message_playerTwo">Player Two Wins</string>
 </resources>
